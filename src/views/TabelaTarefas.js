@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ListaTarefa from './ListaTarefas'; // Corrigido o nome do arquivo de importação
+import ListaTarefa from './ListaTarefas'; 
+import { Link } from 'react-router-dom';
 
 class TabelaTarefas extends Component {
   render() {
     return (
       <div className="container">
+        <h1 className="text-center" style={{marginBottom: "20px", marginTop: "20px"}}>Lista de Tarefas</h1>
         <table className="table" style={{ textAlign: 'center' }}>
           <thead>
             <tr>
@@ -23,6 +25,9 @@ class TabelaTarefas extends Component {
             <ListaTarefa /> 
           </tbody>
         </table>
+        <div className="d-flex justify-content-center" style={{ marginBottom: "20px" }}>
+          <Link to={`/FormAdd/`}><button type="button" className="btn btn-outline-primary" style={{ paddingLeft: '15px', paddingRight: '15px' }}>Adicionar Tarefa</button></Link>
+        </div>
       </div>
     );
   }

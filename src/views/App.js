@@ -1,14 +1,19 @@
 import React from 'react';
-import Form  from './Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TabelaTarefas from './TabelaTarefas';
+import FormAdd from './FormAdd';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import FormEdit from './FormEdit';
 
 function App() {
   return (
-   <div>
-    <Form></Form>
-    <TabelaTarefas></TabelaTarefas>
-   </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<TabelaTarefas />} />
+        <Route path="/FormEdit/:id" element={<FormEdit />} />
+        <Route path="/FormAdd/" element={<FormAdd />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
