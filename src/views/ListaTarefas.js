@@ -30,6 +30,7 @@ class ListaTarefa extends Component {
       });
   }
 
+  //função para exclui tarefas
   excluirTarefa = (tarefa) => {
     const { id } = tarefa; // Extrai o ID da tarefa
     if (window.confirm("Deseja realmente excluir?")) {
@@ -43,7 +44,32 @@ class ListaTarefa extends Component {
     }
   }
   
-  
+  // Altera o estado 'concluida' da tarefa quando o checkbox é clicado
+  handleCheckboxChange = (tarefaId) => {
+    const updatedTarefas = this.state.tarefas.map(tarefa => {
+      if (tarefa.id === tarefaId) {
+        const updatedTarefa = {
+          ...tarefa,
+          concluida: !tarefa.concluida
+        };
+        this.enviarParaAPI(updatedTarefa); // Envia a tarefa atualizada para a API
+        return updatedTarefa;
+      }
+      return tarefa;
+    });
+    this.setState({ tarefas: updatedTarefas });
+  }
+
+  // Função para enviar a tarefa atualizada para a API
+  enviarParaAPI = (tarefa) => {
+    axios.put(`https://localhost:7146/api/Tarefa/${tarefa.id}`, tarefa)
+      .then(response => {
+        console.log('Tarefa atualizada com sucesso:', response.data);
+      })
+      .catch(error => {
+        console.error('Erro ao atualizar a tarefa:', error);
+      });
+  }
   
 
   render() {
@@ -57,7 +83,13 @@ class ListaTarefa extends Component {
             <td>{tarefa.concluida ? 'Sim' : 'Não'}</td>
             <td>{tarefa.dataEntrada}</td>
             <td>{tarefa.dataConclusao}</td>
-            <td><input type='checkbox'></input></td>
+            <td><input 
+                className="form-check-input" 
+                type="checkbox" 
+                id={`checkbox-${tarefa.id}`} 
+                checked={tarefa.concluida} 
+                onChange={() => this.handleCheckboxChange(tarefa.id)} 
+              /></td>
             <td><Link to={`/FormEdit/${tarefa.id}`}><FontAwesomeIcon icon="edit" /></Link></td> 
             <td><FontAwesomeIcon icon="trash" onClick={() => this.excluirTarefa(tarefa)} style={{color:"red"}} /></td>
           </tr>

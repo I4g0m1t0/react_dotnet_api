@@ -17,7 +17,7 @@ class TabelaTarefas extends Component {
               <th>Concluído</th>
               <th>Data de Ínicio</th>
               <th>Data de Conclusão</th>
-              <th>Marcar como Concluída</th>
+              <th>Marcar como Concluído</th>
               <th>Editar</th>
               <th>Deletar</th>
             </tr>
