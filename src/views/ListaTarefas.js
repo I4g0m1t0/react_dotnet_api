@@ -14,6 +14,10 @@ class ListaTarefa extends Component {
   }
 
   componentDidMount() {
+    this.lista();
+  }
+
+  lista = () => {
     axios.get('https://localhost:7146/api/Tarefa')
       .then(response => {
         // handle success
@@ -25,6 +29,22 @@ class ListaTarefa extends Component {
         console.error('Error fetching data:', error);
       });
   }
+
+  excluirTarefa = (tarefa) => {
+    const { id } = tarefa; // Extrai o ID da tarefa
+    if (window.confirm("Deseja realmente excluir?")) {
+      axios.delete(`https://localhost:7146/api/Tarefa/${id}`)
+        .then(response => {
+          this.lista();
+        })
+        .catch(error => {
+          console.error('Erro ao excluir tarefa:', error);
+        });
+    }
+  }
+  
+  
+  
 
   render() {
     return (
@@ -38,7 +58,7 @@ class ListaTarefa extends Component {
             <td>{tarefa.dataEntrada}</td>
             <td>{tarefa.dataConclusao}</td>
             <td><Link to={`/FormEdit/${tarefa.id}`}><FontAwesomeIcon icon="edit" /></Link></td> 
-            <td><FontAwesomeIcon icon="trash" /></td>
+            <td><FontAwesomeIcon icon="trash" onClick={() => this.excluirTarefa(tarefa)} style={{color:"red"}} /></td>
           </tr>
         ))}
       </>
