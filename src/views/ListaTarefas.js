@@ -57,6 +57,7 @@ class ListaTarefa extends Component {
             <td>{tarefa.concluida ? 'Sim' : 'Não'}</td>
             <td>{tarefa.dataEntrada}</td>
             <td>{tarefa.dataConclusao}</td>
+            <td><input type='checkbox'></input></td>
             <td><Link to={`/FormEdit/${tarefa.id}`}><FontAwesomeIcon icon="edit" /></Link></td> 
             <td><FontAwesomeIcon icon="trash" onClick={() => this.excluirTarefa(tarefa)} style={{color:"red"}} /></td>
           </tr>
