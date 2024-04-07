@@ -25,7 +25,7 @@ class TabelaTarefas extends Component {
             <ListaTarefa /> 
           </tbody>
         </table>
-        <div className="d-flex justify-content-center" style={{ marginBottom: "20px" }}>
+        <div className="d-flex justify-content-center" style={{ marginTop: "20px" }}>
           <Link to={`/FormAdd/`}><button type="button" className="btn btn-outline-primary" style={{ paddingLeft: '15px', paddingRight: '15px' }}>Adicionar Tarefa</button></Link>
         </div>
       </div>

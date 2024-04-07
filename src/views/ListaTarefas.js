@@ -34,7 +34,7 @@ class ListaTarefa extends Component {
             <td>{tarefa.id}</td>
             <td>{tarefa.nome}</td>
             <td>{tarefa.descricao}</td>
-            <td>{tarefa.concluida}</td>
+            <td>{tarefa.concluida ? 'Sim' : 'Não'}</td>
             <td>{tarefa.dataEntrada}</td>
             <td>{tarefa.dataConclusao}</td>
             <td><Link to={`/FormEdit/${tarefa.id}`}><FontAwesomeIcon icon="edit" /></Link></td> 

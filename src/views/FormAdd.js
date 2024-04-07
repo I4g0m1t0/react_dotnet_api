@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
 // Componente Form agora é uma função
-function FormAdd() {
-
+class FormAdd extends Component {
+  render(){
   return (
     <div className='container' style={{marginTop:"20px"}}>
           <h1 className="text-center">Adicionar Tarefa</h1>
@@ -47,6 +47,7 @@ function FormAdd() {
           </div>     
         </div> 
   );
+}
 }
 
 export default FormAdd;
